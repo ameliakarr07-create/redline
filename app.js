@@ -1,8 +1,8 @@
 const artworks = [
-  { id: '01', title: 'Velvet Vow', category: 'portrait', label: 'PORTRAIT · ORIGINAL CONCEPT', file: 'velvet-vow.svg', image: 'assets/velvet-vow.svg', description: 'A quiet promise beneath a watchful red moon. Velvet Vow is an original portrait study in devotion, distance, and the line between them.' },
-  { id: '02', title: 'Crimson Hour', category: 'scene', label: 'SCENE · ORIGINAL CONCEPT', file: 'crimson-hour.svg', image: 'assets/crimson-hour.svg', description: 'The school corridors empty at dusk, but not every shadow has gone home. A cinematic scene study in deep reds and late-night stillness.' },
-  { id: '03', title: 'Only Yours', category: 'portrait', label: 'PORTRAIT · ORIGINAL CONCEPT', file: 'only-yours.svg', image: 'assets/only-yours.svg', description: 'A soft gaze, a sharp contrast. This stylized character portrait pairs delicate rose details with the darker edge of an all-consuming crush.' },
-  { id: '04', title: 'Red Thread', category: 'symbol', label: 'SYMBOL · ORIGINAL CONCEPT', file: 'red-thread.svg', image: 'assets/red-thread.svg', description: 'An abstract emblem inspired by the idea of an unbreakable bond: a single crimson thread winding its way through the dark.' }
+  { id: '01', title: 'The Redline Logo', category: 'symbol', label: 'OFFICIAL-STYLE LOGO · BRAND MARK', file: 'redline-logo.svg', image: 'assets/redline-logo.svg', description: 'The signature Redline mark takes center stage: glossy pink lettering, a crimson splash, a little heart, and the teddy-bear mascot. This is the archive’s featured image.' },
+  { id: '02', title: 'Character Card', category: 'portrait', label: 'CHARACTER · PORTRAIT CARD', file: 'character-card.svg', image: 'assets/character-card.svg', description: 'A portrait-card interpretation of the pink-haired character, her black bear companion, and the playful, unsettling sticker-card aesthetic.' },
+  { id: '03', title: 'After Class', category: 'scene', label: 'SCENE · CLASSROOM', file: 'classroom-scene.svg', image: 'assets/classroom-scene.svg', description: 'A classroom scene built around the character, her teddy companion, and the warm late-day light of the supplied reference.' },
+  { id: '04', title: 'The Story Isn’t Over', category: 'scene', label: 'BANNER · STORY ART', file: 'redline-banner.svg', image: 'assets/redline-banner.svg', description: 'A wide story-banner composition pairing the Redline wordmark with a character portrait against a dark chalkboard atmosphere.' }
 ];
 
 const grid = document.querySelector('#gallery-grid');
@@ -19,7 +19,7 @@ function renderGallery() {
     return matchesCategory && matchesSearch;
   });
   grid.innerHTML = filtered.map((art) => `
-    <article class="art-card" tabindex="0" role="button" aria-label="View details for ${art.title}" data-id="${art.id}">
+    <article class="art-card${art.id === '01' ? ' featured-card' : ''}" tabindex="0" role="button" aria-label="View details for ${art.title}" data-id="${art.id}">
       <div class="card-image"><img src="${art.image}" alt="${art.title}, ${art.label.toLowerCase()}" loading="lazy"><span class="card-number">FILE / ${art.id}</span><span class="card-overlay"></span><span class="view-mark" aria-hidden="true">↗</span></div>
       <div class="card-info"><div><h3>${art.title}</h3><p>${art.label}</p></div><a class="card-download" href="${art.image}" download="${art.file}" aria-label="Download ${art.title}" title="Download ${art.title}">↓</a></div>
     </article>`).join('');
